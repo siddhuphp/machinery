@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCategoryRequest extends FormRequest
+class UpdateCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,9 +21,20 @@ class StoreCategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules =  [
             'name' => 'required|string|max:100|unique:categories,name',
             'status' => 'required|in:Active,Inactive'
         ];
+
+        if ($this->isJson()) {
+            $jsonData = json_decode($this->getContent(), true);
+            foreach ($rules as $field => $rule) {
+                if (!array_key_exists($field, $jsonData)) {
+                    unset($rules[$field]);
+                }
+            }
+        }
+
+        return $rules;
     }
 }

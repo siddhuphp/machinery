@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Http\Resources\CategoriesResource;
@@ -71,9 +72,12 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Categories $categories)
+    public function show(Categories $categories, $id)
     {
-        //
+        $data = Categories::where('id', $id)->first();
+        return $this->success([
+            'categories' => $data ? new CategoriesResource($data) : '',
+        ], '', 200);
     }
 
     /**
@@ -87,16 +91,32 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Categories $categories)
+    public function update(UpdateCategoryRequest $request, Categories $categories, $id)
     {
-        //
+        $jsonData = $request->json()->all();
+
+        $validColumns = ['name', 'status'];
+        $data = [];
+        foreach ($validColumns as $column) {
+            if (array_key_exists($column, $jsonData)) {
+                $data[$column] = $jsonData[$column];
+            }
+        }
+
+        $data['updated_by'] = $request->user()->user_id;
+        Categories::where('id', $id)->update($data);
+
+        return $this->success([], 'categories updated successfully!', 202);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categories $categories)
+    public function destroy(Categories $categories, $id)
     {
-        //
+        Categories::where('id', $id)->delete();
+        return $this->success([
+            '',
+        ], 'Category deleted successfully!', 200);
     }
 }
