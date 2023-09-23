@@ -36,4 +36,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //Products
     Route::apiResource('/products', ProductsController::class);
+    Route::post('/products/{id}', [ProductsController::class, 'update']);
 });

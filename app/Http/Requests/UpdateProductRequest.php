@@ -29,7 +29,7 @@ class UpdateProductRequest extends FormRequest
             'status' => 'required|string|in:Active,Inactive',
             'short_desc' => 'required|string',
             'description' => 'required|string',
-            'product_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'product_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'meta_title' => 'string|nullable',
             'meta_keywords' => 'string|nullable',
             'meta_desc' => 'string|nullable',
