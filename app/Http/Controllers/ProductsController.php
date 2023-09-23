@@ -173,12 +173,13 @@ class ProductsController extends Controller
         // Find the product
         $product = Products::where('product_id', $id)->firstOrFail();
 
+        Products::where('product_id', $id)->delete();
+
         // Remove the old image from the server if it exists
         if (!empty($product->product_image) && Storage::disk('public')->exists($product->product_image)) {
             Storage::disk('public')->delete($product->product_image);
         }
 
-        Products::where('product_id', $id)->delete();
         return $this->success([
             '',
         ], 'Product deleted successfully!', 200);
