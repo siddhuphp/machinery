@@ -70,4 +70,33 @@ class AuthController extends Controller
             'message' => 'logged out'
         ]);
     }
+
+    public function userDetails(Request $request)
+    {
+        $user = $request->user();
+        dd($user);
+    }
+
+
+    public function index()
+    {
+        return view('login');
+    }
+
+    public function customLogin(Request $request)
+    {
+        $response = $this->login($request);
+        // Check if the response was successful
+        if ($response->getStatusCode() === 200) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);
+            return redirect('admin-categories')->with('success', 'Successfully inserted !');
+        }
+
+        if ($response->getStatusCode() === 401) {
+            return redirect('/owner')->with('error', 'Bad credentials');
+        }
+
+        return redirect("/owner")->with('error', 'Something went wrong! Please try again.');
+    }
 }

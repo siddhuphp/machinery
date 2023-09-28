@@ -39,7 +39,17 @@ class CategoriesController extends Controller
         $data = $query->paginate(10);
 
         return $this->success([
-            'customers' => CategoriesResource::collection($data),
+            'categories' => CategoriesResource::collection($data),
+            'pagination' => [
+                'total' => $data->total(),
+                'per_page' => $data->perPage(),
+                'current_page' => $data->currentPage(),
+                'last_page' => $data->lastPage(),
+                'first_page_url' => $data->url(1),
+                'last_page_url' => $data->url($data->lastPage()),
+                'next_page_url' => $data->nextPageUrl(),
+                'prev_page_url' => $data->previousPageUrl()
+            ],
         ], '', 200);
     }
 
@@ -118,5 +128,20 @@ class CategoriesController extends Controller
         return $this->success([
             '',
         ], 'Category deleted successfully!', 200);
+    }
+
+
+    public function listCategories(Request $request)
+    {
+        $response = $this->index($request);
+
+        // Check if the response was successful
+        if ($response->getStatusCode() === 200) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);
+            return view('categoriesList', compact('data'));
+        } else {
+            return redirect("/")->with('error', 'Something went wrong! Please try again.');
+        }
     }
 }
