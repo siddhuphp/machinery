@@ -8,6 +8,7 @@ use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Http\Resources\CategoriesResource;
 use App\Traits\HttpResponses;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -82,7 +83,7 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Categories $categories, $id)
+    public function show($id)
     {
         $data = Categories::where('id', $id)->first();
         return $this->success([
@@ -101,10 +102,10 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Categories $categories, $id)
+    public function update(UpdateCategoryRequest $request, $id)
     {
         $jsonData = $request->json()->all();
-
+        dd($jsonData);
         $validColumns = ['name', 'status'];
         $data = [];
         foreach ($validColumns as $column) {
@@ -133,6 +134,8 @@ class CategoriesController extends Controller
 
     public function listCategories(Request $request)
     {
+        $request['order_by'] = 'created_at';
+        $request['sort_order'] = 'desc';
         $response = $this->index($request);
 
         // Check if the response was successful
@@ -140,6 +143,54 @@ class CategoriesController extends Controller
             $content = $response->getContent();
             $data = json_decode($content, true);
             return view('categoriesList', compact('data'));
+        } else {
+            return redirect("/")->with('error', 'Something went wrong! Please try again.');
+        }
+    }
+
+
+    public function addCategory()
+    {
+        return view('createCategory');
+    }
+
+    public function storeCategory(StoreCategoryRequest $request)
+    {
+        $response = $this->store($request);
+        // Check if the response was successful
+        if ($response->getStatusCode() === 201) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);
+            // dd($data['data']['item']);
+            // $item = $data['item'];
+            return redirect('admin-categories')->with('success', 'Category added successfully!');
+        } else {
+            return redirect("/")->with('error', 'Something went wrong! Please try again.');
+        }
+    }
+
+    public function editCategory($id)
+    {
+        $response = $this->show($id);
+        if ($response->getStatusCode() === 200) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);
+            return view('editCategory', compact('data'));
+        } else {
+            return redirect("/")->with('error', 'Something went wrong! Please try again.');
+        }
+    }
+
+
+    public function updateCategory(UpdateCategoryRequest $request, $id)
+    {
+        $response = $this->update($request, $id);
+        // Check if the response was successful
+        if ($response->getStatusCode() === 202) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);
+            // $item = $data['item'];
+            return redirect('admin-categories')->with('success', 'Category updated successfully!');
         } else {
             return redirect("/")->with('error', 'Something went wrong! Please try again.');
         }

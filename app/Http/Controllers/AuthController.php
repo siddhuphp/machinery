@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Traits\HttpResponses;
+use Illuminate\Support\Facades\Auth;
+
+use Session;
+
 
 class AuthController extends Controller
 {
@@ -85,18 +89,26 @@ class AuthController extends Controller
 
     public function customLogin(Request $request)
     {
-        $response = $this->login($request);
-        // Check if the response was successful
-        if ($response->getStatusCode() === 200) {
-            $content = $response->getContent();
-            $data = json_decode($content, true);
-            return redirect('admin-categories')->with('success', 'Successfully inserted !');
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('admin-categories')
+                ->withSuccess('Signed in');
         }
 
-        if ($response->getStatusCode() === 401) {
-            return redirect('/owner')->with('error', 'Bad credentials');
-        }
+        return redirect('/owner')->withError('Login details are not valid');
+    }
 
-        return redirect("/owner")->with('error', 'Something went wrong! Please try again.');
+
+    public function signOut()
+    {
+        Session::flush();
+        Auth::logout();
+
+        return Redirect('/owner')->with('success', 'logged out successfully !');
     }
 }
