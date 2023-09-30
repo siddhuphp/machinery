@@ -145,7 +145,6 @@ class CategoriesController extends Controller
     public function destroy($id)
     {
         Categories::where('id', $id)->delete();
-        Products::where('category_id', $id)->delete();
         return $this->success([
             '',
         ], 'Category deleted successfully!', 410);
