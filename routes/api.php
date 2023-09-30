@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //Categories
     Route::apiResource('/categories', CategoriesController::class);
+    Route::post('/categories/{id}', [CategoriesController::class, 'update']);
 
     //Products
     Route::apiResource('/products', ProductsController::class);

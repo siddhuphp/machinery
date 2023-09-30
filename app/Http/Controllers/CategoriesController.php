@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Requests\UpdateCateRequest;
 use App\Models\Categories;
+use App\Models\Products;
 use Illuminate\Http\Request;
 use App\Http\Resources\CategoriesResource;
 use App\Traits\HttpResponses;
@@ -102,10 +104,27 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, $id)
+    public function update(UpdateCateRequest $request, $id)
+    {
+        $request->validated();
+        $data = [
+            'name' => $request->name,
+            'status' => $request->status,
+            'updated_by' => $request->user()->user_id,
+        ];
+        $update = Categories::where('id', $id)->update($data);
+        return $this->success([
+            'category' => $update,
+        ], 'category updated successfully!', 202);
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function updateCategoryColumns(UpdateCategoryRequest $request, $id)
     {
         $jsonData = $request->json()->all();
-        dd($jsonData);
         $validColumns = ['name', 'status'];
         $data = [];
         foreach ($validColumns as $column) {
@@ -123,12 +142,13 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Categories $categories, $id)
+    public function destroy($id)
     {
         Categories::where('id', $id)->delete();
+        Products::where('category_id', $id)->delete();
         return $this->success([
             '',
-        ], 'Category deleted successfully!', 200);
+        ], 'Category deleted successfully!', 410);
     }
 
 
@@ -182,15 +202,28 @@ class CategoriesController extends Controller
     }
 
 
-    public function updateCategory(UpdateCategoryRequest $request, $id)
+    public function updateCategory(UpdateCateRequest $request, $id)
     {
         $response = $this->update($request, $id);
+        // dd($response);
         // Check if the response was successful
         if ($response->getStatusCode() === 202) {
             $content = $response->getContent();
             $data = json_decode($content, true);
             // $item = $data['item'];
             return redirect('admin-categories')->with('success', 'Category updated successfully!');
+        } else {
+            return redirect("/")->with('error', 'Something went wrong! Please try again.');
+        }
+    }
+
+    public function deleteCategory($id)
+    {
+        $response = $this->destroy($id);
+        if ($response->getStatusCode() === 410) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);
+            return redirect('admin-categories')->with('success', 'Category deleted successfully!');
         } else {
             return redirect("/")->with('error', 'Something went wrong! Please try again.');
         }

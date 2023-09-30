@@ -54,7 +54,7 @@ $j = 1;
                 <td>{{ $c['createdAt'] }}</td>
                 <td>
                   <a href="{{ route('edit-category',$c['categoryId']) }}"><i class="bi bi-pencil-square"></i></a> |
-                  <a href="{{ route('delete-category', $c['categoryId']) }}" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></a>
+                  <a href="{{ route('delete-category',$c['categoryId']) }}" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></a>
                 </td>
               </tr>
               @endforeach
