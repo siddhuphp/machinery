@@ -27,9 +27,7 @@ return new class extends Migration
             $table->string('created_by', 50)->references('user_id')->on('users');
             $table->string('updated_by', 50)->nullable()->default(null);
             $table->string('category_id', 50)->references('id')->on('categories');
-            $table->timestamps();
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->timestamps();           
         });
     }
 

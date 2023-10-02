@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Products;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProductsResource;
+use App\Http\Resources\CategoriesResource;
 use App\Traits\HttpResponses;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,16 +48,36 @@ class ProductsController extends Controller
         $data = $query->paginate(10);
 
         return $this->success([
-            'Products' => $data,
+            'products' => ProductsResource::collection($data),
+            'pagination' => [
+                'total' => $data->total(),
+                'per_page' => $data->perPage(),
+                'current_page' => $data->currentPage(),
+                'last_page' => $data->lastPage(),
+                'first_page_url' => $data->url(1),
+                'last_page_url' => $data->url($data->lastPage()),
+                'next_page_url' => $data->nextPageUrl(),
+                'prev_page_url' => $data->previousPageUrl()
+            ],
         ], '', 200);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $categoryId = $request->input('categoryId'); // Assuming 'customer_id' is the key in the request
+    
+        $query = Categories::where('status', 'Active');
+        
+        if ($categoryId) {
+            $query->where('id', $categoryId);
+        }
+        
+        $category = $query->get();
+        
+        return view('createProduct', compact('category'));       
     }
 
     /**
@@ -112,9 +134,15 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Products $products)
+    public function edit(Products $products, $id)
     {
-        //
+        $query = Products::where('product_id', $id);        
+        $product =  $query->get();        
+
+        $categories = Categories::where('status', 'Active');
+        $category =  $categories->get();
+        
+        return view('editProduct', compact('product','category'));  
     }
 
     /**
@@ -126,7 +154,6 @@ class ProductsController extends Controller
 
         // Find the product
         $product = Products::where('product_id', $id)->firstOrFail();
-
 
         $data = [
             'name' => $request->name,
@@ -162,7 +189,7 @@ class ProductsController extends Controller
         $update = Products::where('product_id', $id)->update($data);
         return $this->success([
             'Product' => $update,
-        ], 'Product updated successfully!', 201);
+        ], 'Product updated successfully!', 202);
     }
 
     /**
@@ -183,5 +210,50 @@ class ProductsController extends Controller
         return $this->success([
             '',
         ], 'Product deleted successfully!', 200);
+    }
+
+    public function listProducts(Request $request)
+    {
+        $request['order_by'] = 'created_at';
+        $request['sort_order'] = 'desc';
+        $response = $this->index($request);
+
+        // Check if the response was successful
+        if ($response->getStatusCode() === 200) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);
+            return view('productsList', compact('data'));
+        } else {
+            return redirect("/")->with('error', 'Something went wrong! Please try again.');
+        }
+    }
+
+    public function storeProduct(StoreProductRequest $request)
+    {
+        $response = $this->store($request);
+        // Check if the response was successful
+        if ($response->getStatusCode() === 201) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);
+            // dd($data['data']['item']);
+            // $item = $data['item'];
+            return redirect('admin-products')->with('success', 'Product added successfully!');
+        } else {
+            return redirect("/")->with('error', 'Something went wrong! Please try again.');
+        }
+    }
+
+    public function updateProduct(UpdateProductRequest $request, Products $products, $id)
+    {
+        $response = $this->update($request, $products, $id);
+        // dd($response);
+        // Check if the response was successful
+        if ($response->getStatusCode() === 202) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);            
+            return redirect('admin-products')->with('success', 'Category updated successfully!');
+        } else {
+            return redirect("/")->with('error', 'Something went wrong! Please try again.');
+        }
     }
 }
