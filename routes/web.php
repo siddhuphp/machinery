@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\AboutController;
 
 
 /*
@@ -46,5 +47,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('edit-product/{id}',  [ProductsController::class, 'edit'])->name('edit-product');
     Route::post('update-product/{id}',  [ProductsController::class, 'updateProduct'])->name('update-product');
     Route::get('delete-product/{id}',  [ProductsController::class, 'deleteProduct'])->name('delete-product');
-    
+
+
+    Route::get('admin-about',  [AboutController::class, 'create'])->name('add-about');
+    Route::post('update-about',  [AboutController::class, 'updateAbout'])->name('update-about');
 });

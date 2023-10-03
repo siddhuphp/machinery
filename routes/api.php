@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //Products
     Route::apiResource('/products', ProductsController::class);
     Route::post('/products/{id}', [ProductsController::class, 'update']);
+
+
+    Route::post('/about-us/update', [AboutController::class, 'update']);
 });

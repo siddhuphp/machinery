@@ -6,7 +6,7 @@
 $data = [];
 if(!empty($product[0]))
 {
-  $data = $product[0];
+$data = $product[0];
 }
 @endphp
 <section class="section">
@@ -18,16 +18,16 @@ if(!empty($product[0]))
           <h5 class="card-title">Product</h5>
 
           @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-          @endif    
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+          @endif
 
-      
+
 
           <!-- Multi Columns Form -->
           <form method="post" class="row g-3" action="{{ route('update-product', $data->product_id) }}" enctype="multipart/form-data">
@@ -36,13 +36,13 @@ if(!empty($product[0]))
             <div class="row mb-3">
               <label for="category_id" class="col-sm-2 col-form-label">Select category</label>
               <div class="col-sm-10">
-              <select class="form-select select2" aria-label="Default select example"  id="category_id" name="category_id" >
-                      <option selected="">Select category</option>
-                      @foreach($category as $c)
-                      <option {{ ( $data->category_id ==  $c->id )?"selected":"" }} value="{{ $c->id }}">{{ $c->name }}</option>
-                      @endforeach                     
-                    </select>
-                    </div>
+                <select class="form-select select2" aria-label="Default select example" id="category_id" name="category_id">
+                  <option selected="">Select category</option>
+                  @foreach($category as $c)
+                  <option {{ ( $data->category_id ==  $c->id )?"selected":"" }} value="{{ $c->id }}">{{ $c->name }}</option>
+                  @endforeach
+                </select>
+              </div>
             </div>
 
             <div class="row mb-3">
@@ -58,7 +58,7 @@ if(!empty($product[0]))
                 <input type="text" class="form-control" name="price" value="{{ $data->price }}">
               </div>
             </div>
-          
+
             <div class="row mb-3">
               <label for="offer_price" class="col-sm-2 col-form-label">Offer Price</label>
               <div class="col-sm-10">
@@ -68,14 +68,14 @@ if(!empty($product[0]))
 
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Short desc</label>
-              <div class="col-sm-10">                    
+              <div class="col-sm-10">
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="short_desc">{{ $data->short_desc }}</textarea><!-- End TinyMCE Editor -->
               </div>
             </div>
 
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Description</label>
-              <div class="col-sm-10">                    
+              <div class="col-sm-10">
                 <textarea class="form-control" id="description" rows="3" name="description">{{ $data->description }}</textarea><!-- End TinyMCE Editor -->
               </div>
             </div>
@@ -94,7 +94,7 @@ if(!empty($product[0]))
             <div class="row mb-3">
               <label for="inputNumber" class="col-sm-2 col-form-label">Image</label>
               <div class="col-sm-10">
-                <input class="form-control" type="file" id="formFile"  accept="image/png, image/jpeg" name="product_image">
+                <input class="form-control" type="file" id="formFile" accept="image/png, image/jpeg" name="product_image">
               </div>
             </div>
 
@@ -114,14 +114,13 @@ if(!empty($product[0]))
 
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Meta Desc</label>
-              <div class="col-sm-10">                    
+              <div class="col-sm-10">
                 <textarea class="form-control" id="meta_desc" rows="3" name="meta_desc">{{ $data->meta_desc }}</textarea><!-- End TinyMCE Editor -->
               </div>
             </div>
-            
+
             <div class="text-center">
-              <button type="submit" class="btn btn-primary" value="submit">Submit</button>
-              <button type="submit" class="btn btn-primary"  value="add_more">Add More Items</button>
+              <button type="submit" class="btn btn-primary" value="submit">Update</button>
               <button type="reset" class="btn btn-secondary">Reset</button>
             </div>
           </form><!-- End Multi Columns Form -->
@@ -131,7 +130,7 @@ if(!empty($product[0]))
 
     </div>
 
-    
+
   </div>
 </section>
 @endsection
@@ -141,13 +140,15 @@ if(!empty($product[0]))
 <style>
   .select2-selection__rendered {
     line-height: 31px !important;
-}
-.select2-container .select2-selection--single {
+  }
+
+  .select2-container .select2-selection--single {
     height: 35px !important;
-}
-.select2-selection__arrow {
+  }
+
+  .select2-selection__arrow {
     height: 34px !important;
-}
+  }
 </style>
 @endsection
 
@@ -159,6 +160,6 @@ if(!empty($product[0]))
     $('.select2').select2({
       theme: "classic"
     });
-});
+  });
 </script>
 @endsection

@@ -82,9 +82,9 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ route('add-about') }}">
           <i class="bi bi-file-plus"></i>
-          <span>Why we?</span>
+          <span>About Page</span>
         </a>
       </li>
 
