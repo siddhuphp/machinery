@@ -68,16 +68,16 @@ class ProductsController extends Controller
     public function create(Request $request)
     {
         $categoryId = $request->input('categoryId'); // Assuming 'customer_id' is the key in the request
-    
+
         $query = Categories::where('status', 'Active');
-        
+
         if ($categoryId) {
             $query->where('id', $categoryId);
         }
-        
+
         $category = $query->get();
-        
-        return view('createProduct', compact('category'));       
+
+        return view('createProduct', compact('category'));
     }
 
     /**
@@ -136,13 +136,13 @@ class ProductsController extends Controller
      */
     public function edit(Products $products, $id)
     {
-        $query = Products::where('product_id', $id);        
-        $product =  $query->get();        
+        $query = Products::where('product_id', $id);
+        $product =  $query->get();
 
         $categories = Categories::where('status', 'Active');
         $category =  $categories->get();
-        
-        return view('editProduct', compact('product','category'));  
+
+        return view('editProduct', compact('product', 'category'));
     }
 
     /**
@@ -195,7 +195,7 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Products $products, $id)
+    public function destroy($id)
     {
         // Find the product
         $product = Products::where('product_id', $id)->firstOrFail();
@@ -209,7 +209,7 @@ class ProductsController extends Controller
 
         return $this->success([
             '',
-        ], 'Product deleted successfully!', 200);
+        ], 'Product deleted successfully!', 410);
     }
 
     public function listProducts(Request $request)
@@ -250,8 +250,20 @@ class ProductsController extends Controller
         // Check if the response was successful
         if ($response->getStatusCode() === 202) {
             $content = $response->getContent();
-            $data = json_decode($content, true);            
-            return redirect('admin-products')->with('success', 'Category updated successfully!');
+            $data = json_decode($content, true);
+            return redirect('admin-products')->with('success', 'Product updated successfully!');
+        } else {
+            return redirect("/")->with('error', 'Something went wrong! Please try again.');
+        }
+    }
+
+    public function deleteProduct($id)
+    {
+        $response = $this->destroy($id);
+        if ($response->getStatusCode() === 410) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);
+            return redirect('admin-products')->with('success', 'Product deleted successfully!');
         } else {
             return redirect("/")->with('error', 'Something went wrong! Please try again.');
         }
