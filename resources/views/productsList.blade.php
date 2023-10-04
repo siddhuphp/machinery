@@ -81,7 +81,7 @@ $j = 1;
                     @endif
 
                     @for ($i = 1; $i <= $pagination['last_page']; $i++) <li class="page-item {{ $i == $pagination['current_page'] ? 'active' : '' }}">
-                      <a class="page-link" href="{{ route('categories') }}{{ $i == 1 ? '' : '?page=' . $i }}">{{ $i }}</a>
+                      <a class="page-link" href="{{ route('products') }}{{ $i == 1 ? '' : '?page=' . $i }}">{{ $i }}</a>
                       </li>
                       @endfor
 
