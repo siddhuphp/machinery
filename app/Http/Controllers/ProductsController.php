@@ -117,7 +117,7 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Products $products, $id)
+    public function show($id)
     {
         $query = Products::query()
             ->select('products.*', 'categories.name as category_name')
@@ -127,7 +127,7 @@ class ProductsController extends Controller
         // Retrieve results
         $data = $query->get();
         return $this->success([
-            'Products' => $data,
+            'Products' => ProductsResource::collection($data),
         ], '', 200);
     }
 
@@ -264,6 +264,20 @@ class ProductsController extends Controller
             $content = $response->getContent();
             $data = json_decode($content, true);
             return redirect('admin-products')->with('success', 'Product deleted successfully!');
+        } else {
+            return redirect("/")->with('error', 'Something went wrong! Please try again.');
+        }
+    }
+
+    public function view($id)
+    {
+        $response = $this->show($id);
+
+        // Check if the response was successful
+        if ($response->getStatusCode() === 200) {
+            $content = $response->getContent();
+            $data = json_decode($content, true);
+            return view('productView', compact('data'));
         } else {
             return redirect("/")->with('error', 'Something went wrong! Please try again.');
         }

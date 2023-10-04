@@ -60,9 +60,9 @@ $j = 1;
                 <td>{{ $c['status'] }}</td>
                 <td>{{ $c['createdAt'] }}</td>
                 <td>
-                  <a href="{{ 2 }}"><i class="bi bi-eye"></i></a> |
-                  <a href="{{ route('edit-product', $c['productId']) }}"><i class="bi bi-pencil-square"></i></a> |
-                  <a href="{{ route('delete-product', $c['productId']) }}" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></a>
+                  <a href="{{ route('view-product', $c['productId']) }}" title="View"><i class="bi bi-eye"></i></a> |
+                  <a href="{{ route('edit-product', $c['productId']) }}" title="Edit"><i class="bi bi-pencil-square"></i></a> |
+                  <a href="{{ route('delete-product', $c['productId']) }}" title="Delete" onclick="return confirm('Are you sure?')"><i class="bi bi-trash3"></i></a>
                 </td>
               </tr>
               @endforeach
@@ -81,9 +81,9 @@ $j = 1;
                 @endif
 
                 @for ($i = 1; $i <= $pagination['last_page']; $i++) <li class="page-item {{ $i == $pagination['current_page'] ? 'active' : '' }}">
-                  <a class="page-link" href="{{ route('categories') }}{{ $i == 1 ? '' : '?page=' . $i }}">{{ $i }}</a>
-                  </li>
-                  @endfor
+                <a class="page-link" href="{{ route('products') }}{{ $i == 1 ? '' : '?page=' . $i }}">{{ $i }}</a>
+                </li>
+                @endfor
 
                   @if ($pagination['next_page_url'])
                   <li class="page-item"><a class="page-link" href="{{ $pagination['next_page_url'] }}">Next</a></li>

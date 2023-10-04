@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('edit-product/{id}',  [ProductsController::class, 'edit'])->name('edit-product');
     Route::post('update-product/{id}',  [ProductsController::class, 'updateProduct'])->name('update-product');
     Route::get('delete-product/{id}',  [ProductsController::class, 'deleteProduct'])->name('delete-product');
+    Route::get('view-product/{id}',  [ProductsController::class, 'view'])->name('view-product');
 
 
     Route::get('admin-about',  [AboutController::class, 'create'])->name('add-about');
