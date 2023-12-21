@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -53,3 +54,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('admin-about',  [AboutController::class, 'create'])->name('add-about');
     Route::post('update-about',  [AboutController::class, 'updateAbout'])->name('update-about');
 });
+
+//Frontend
+Route::get('/', [HomeController::class, 'index'])->name('home');
