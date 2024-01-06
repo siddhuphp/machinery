@@ -2,6 +2,10 @@
 @section('breadcrum','Categories')
 @section('content')
 
+@php
+echo "siddhu";
+@endphp
+
 <!-- Slider images-->
 <section class="slider_section  mb-42">
     <div class="container">
@@ -114,15 +118,15 @@
         <div class="row">
             <div class="col-12">
                 <div class="col-lg-12 col-md-12">
-                    <!--shop wrapper start-->
-                    <!--shop toolbar start-->
+                   
                     <div class="shop_banner">
                         <img src="assets/img/bg/banner8.jpg" alt="">
                     </div>
+
                     <div class="shop_title">
                         <h1>Products</h1>
                     </div>
-                    <!--shop toolbar end-->
+                  
 
                     <div class="row shop_wrapper">
                         <div class="col-lg-4 col-md-4 col-12 ">
@@ -1122,8 +1126,7 @@
                             </div>
                         </div>
                     </div>
-                    <!--shop toolbar end-->
-                    <!--shop wrapper end-->
+                    
                 </div>
 
             </div>

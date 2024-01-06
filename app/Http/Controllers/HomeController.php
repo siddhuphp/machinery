@@ -6,6 +6,8 @@ use App\Models\About;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateAboutRequest;
 use App\Traits\HttpResponses;
+use App\Models\Products;
+use App\Http\Resources\ProductsResource;
 
 class HomeController extends Controller
 {
@@ -13,10 +15,41 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $about = [];
-        return view('frontend.home', compact('about'));
+
+        $query = Products::query()
+            ->select('products.*', 'categories.name as category_name')
+            ->leftJoin('categories', 'categories.id', '=', 'products.category_id');
+
+        // Apply search filter
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where('name', 'like', '%' . $searchTerm . '%')
+                ->orWhere('short_desc', 'like', '%' . $searchTerm . '%');
+        }
+
+        // Apply order by filter
+        if ($request->has('order_by')) {
+            $orderByColumn = $request->input('order_by');
+            $sortOrder = $request->input('sort_order', 'asc');
+            $query->orderBy($orderByColumn, $sortOrder);
+        }
+
+        // Filter by cateId
+        if ($request->has('cateId')) {
+            $customerId = $request->input('cateId');
+            $query->where('category_id', $customerId);
+        }
+
+        // Retrieve results
+        $data = $query->paginate(10);
+
+        $data = ProductsResource::collection($data);
+
+
+        return view('frontend.home', compact('data'));
     }
 
     /**
