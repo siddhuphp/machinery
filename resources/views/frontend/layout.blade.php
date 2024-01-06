@@ -86,10 +86,10 @@
             <div class="main_menu header_position">
               <nav>
                 <ul>
-                  <li><a href="index-3.html">home</a></li>
-                  <li><a href="index-3.html">category</a></li>
-                  <li><a href="about.html">about Us</a></li>
-                  <li><a href="contact.html"> Contact Us</a></li>
+                  <li><a href="{{ route('home') }}">home</a></li>
+                  <li><a href="{{ route('categories-list') }}">category</a></li>
+                  <li><a href="{{ route('about-us') }}">about Us</a></li>
+                  <li><a href="{{ route('contact-us') }}"> Contact Us</a></li>
                 </ul>
               </nav>
             </div>
@@ -127,6 +127,34 @@
 
   @yield('content')
 
+  <!-- Social icons-->
+  <section class="call_to_action">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="call_action_inner">
+            <div class="call_text">
+              <h3>We Have <span>Recommendations</span> for You</h3>
+              <p>Take 30% off when you spend $150 or more with code Autima11</p>
+            </div>
+            <div class="discover_now">
+              <a href="#">discover now</a>
+            </div>
+            <div class="link_follow">
+              <ul>
+                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                <li><a href="#"><i class="ion-social-youtube"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- social icons end -->
+
 
   <!--footer area start-->
   <footer class="footer_widgets">
@@ -139,10 +167,9 @@
                 <a href="#"><img src="assets/img/logo/logo.png" alt=""></a>
               </div>
               <div class="footer_contact">
-                <p>We are a team of designers and developers that
-                  create high quality Magento, Prestashop, Opencart...</p>
-                <p><span>Address</span> 4710-4890 Breckinridge St, UK Burlington, VT 05401</p>
-                <p><span>Need Help?</span>Call: <a href="tel:1-800-345-6789">1-800-345-6789</a></p>
+                <p>Trusted used earth moving machinary sales and spare parts store.</p>
+                <p><span>Address</span> B-Block, Shed-4, Autonagar, Visakhapatnam-530012.</p>
+                <p><span>Need Help?</span>Call: <a href="tel:+91-9989287932">+91-9989287932</a></p>
               </div>
             </div>
           </div>
@@ -154,25 +181,8 @@
                   <li><a href="about.html">About Us</a></li>
                   <li><a href="#">Delivery Information</a></li>
                   <li><a href="privacy-policy.html">privacy policy</a></li>
-                  <li><a href="coming-soon.html">Coming Soon</a></li>
                   <li><a href="#">Terms & Conditions</a></li>
-                  <li><a href="#">Returns</a></li>
-                  <li><a href="#">Gift Certificates</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-6 col-sm-6">
-            <div class="widgets_container widget_menu">
-              <h3>Extras</h3>
-              <div class="footer_menu">
-                <ul>
-                  <li><a href="#">Returns</a></li>
-                  <li><a href="#">Order History</a></li>
-                  <li><a href="wishlist.html">Wish List</a></li>
-                  <li><a href="#">Newsletter</a></li>
-                  <li><a href="#">Affiliate</a></li>
-                  <li><a href="#">Specials</a></li>
+                  <li><a href="#">Return Policy</a></li>
                 </ul>
               </div>
             </div>

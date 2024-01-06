@@ -94,4 +94,31 @@ class HomeController extends Controller
             return redirect("/")->with('error', 'Something went wrong! Please try again.');
         }
     }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function categories()
+    {
+        $about = [];
+        return view('frontend.categories', compact('about'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function about()
+    {
+        $about = [];
+        return view('frontend.about', compact('about'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function contact()
+    {
+        $about = [];
+        return view('frontend.contact', compact('about'));
+    }
 }
