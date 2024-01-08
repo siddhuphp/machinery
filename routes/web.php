@@ -58,5 +58,6 @@ Route::middleware(['auth'])->group(function () {
 //Frontend
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/categories', [HomeController::class, 'categories'])->name('categories-list');
+Route::get('/prod', [HomeController::class, 'prodtectDetails'])->name('product-details');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about-us');
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact-us');

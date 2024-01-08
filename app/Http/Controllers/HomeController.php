@@ -112,6 +112,13 @@ class HomeController extends Controller
         return view('frontend.categories', compact('categories','data'));
     }
 
+    public function prodtectDetails(Request $request)
+    {
+        $data = $this->getProductData($request);        
+        return view('frontend.productDetails', compact('data'));
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -156,6 +163,12 @@ class HomeController extends Controller
         if ($request->has('cateId')) {
             $customerId = $request->input('cateId');
             $query->where('category_id', $customerId);
+        }
+
+        // Filter by proId
+        if ($request->has('proId')) {
+            $proId = $request->input('proId');
+            $query->where('product_id', $proId);
         }
 
         // Retrieve results
