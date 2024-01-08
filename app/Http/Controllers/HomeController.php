@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UpdateAboutRequest;
 use App\Traits\HttpResponses;
 use App\Models\Products;
+use App\Models\Categories;
 use App\Http\Resources\ProductsResource;
+use App\Http\Resources\CategoriesResource;
 
 class HomeController extends Controller
 {
@@ -17,38 +19,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $about = [];
-
-        $query = Products::query()
-            ->select('products.*', 'categories.name as category_name')
-            ->leftJoin('categories', 'categories.id', '=', 'products.category_id');
-
-        // Apply search filter
-        if ($request->has('search')) {
-            $searchTerm = $request->input('search');
-            $query->where('name', 'like', '%' . $searchTerm . '%')
-                ->orWhere('short_desc', 'like', '%' . $searchTerm . '%');
-        }
-
-        // Apply order by filter
-        if ($request->has('order_by')) {
-            $orderByColumn = $request->input('order_by');
-            $sortOrder = $request->input('sort_order', 'asc');
-            $query->orderBy($orderByColumn, $sortOrder);
-        }
-
-        // Filter by cateId
-        if ($request->has('cateId')) {
-            $customerId = $request->input('cateId');
-            $query->where('category_id', $customerId);
-        }
-
-        // Retrieve results
-        $data = $query->paginate(10);
-
-        $data = ProductsResource::collection($data);
-
-
+        $data = $this->getProductData($request);
         return view('frontend.home', compact('data'));
     }
 
@@ -131,10 +102,14 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function categories()
+    public function categories(Request $request)
     {
-        $about = [];
-        return view('frontend.categories', compact('about'));
+        $categories = Categories::select('categories.*')
+        ->selectRaw('(SELECT COUNT(p.product_id) FROM products AS p WHERE p.status = "Active" AND p.category_id = categories.id) AS productsCount')
+        ->where('categories.status', 'Active')
+        ->get();
+        $data = $this->getProductData($request);        
+        return view('frontend.categories', compact('categories','data'));
     }
 
     /**
@@ -153,5 +128,39 @@ class HomeController extends Controller
     {
         $about = [];
         return view('frontend.contact', compact('about'));
+    }
+
+
+    private function getProductData(Request $request)
+    {
+        $query = Products::query()
+        ->select('products.*', 'categories.name as category_name')
+        ->leftJoin('categories', 'categories.id', '=', 'products.category_id')
+        ->where('products.status','Active');
+
+        // Apply search filter
+        if ($request->has('search')) {
+            $searchTerm = $request->input('search');
+            $query->where('name', 'like', '%' . $searchTerm . '%')
+                ->orWhere('short_desc', 'like', '%' . $searchTerm . '%');
+        }
+
+        // Apply order by filter
+        if ($request->has('order_by')) {
+            $orderByColumn = $request->input('order_by');
+            $sortOrder = $request->input('sort_order', 'asc');
+            $query->orderBy($orderByColumn, $sortOrder);
+        }
+
+        // Filter by cateId
+        if ($request->has('cateId')) {
+            $customerId = $request->input('cateId');
+            $query->where('category_id', $customerId);
+        }
+
+        // Retrieve results
+        $data = $query->paginate(10);
+        $data = ProductsResource::collection($data);
+        return $data;
     }
 }
