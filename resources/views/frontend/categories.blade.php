@@ -76,16 +76,16 @@
                     <div class="row shop_wrapper grid_list">
                         @php 
                         if(!empty($data)){ @endphp
-                        @foreach($data as $product)
+                        @foreach($data as $product)                       
                         <div class=" col-12 ">
                             <div class="single_product">
                                 <div class="product_name grid_name">
-                                    <h3><a href="product-details.html">{{$product->name}}</a></h3>
+                                    <h3><a href="{{ route('product-details', ['prodId' => $product->product_id]) }}">{{$product->name}}</a></h3>
                                     <p class="manufacture_product"><a href="#">{{$product->category_name}}</a></p>
                                 </div>
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="product-details.html"><img src="{{ $product->productImage }}" alt=""></a>
-                                    <a class="secondary_img" href="product-details.html"><img src="{{ $product->productImage }}" alt=""></a>
+                                    <a class="primary_img" href="{{ route('product-details', ['prodId' => $product->product_id]) }}"><img src="{{ $product->productImage }}" alt=""></a>
+                                    <a class="secondary_img" href="{{ route('product-details', ['prodId' => $product->product_id]) }}"><img src="{{ $product->productImage }}" alt=""></a>
                                     <!-- <div class="label_product">
                                         <span class="label_sale">-47%</span>
                                     </div>
@@ -128,7 +128,7 @@
                                 <div class="product_content list_content">
                                     <div class="left_caption">
                                         <div class="product_name">
-                                            <h3><a href="product-details.html">{{$product->name}}</a></h3>
+                                            <h3><a href="{{ route('product-details', ['prodId' => $product->product_id]) }} ">{{$product->name}}</a></h3>
                                         </div>
                                         <div class="product_ratings">
                                             <ul>

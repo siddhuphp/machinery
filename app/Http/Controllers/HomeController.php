@@ -114,8 +114,13 @@ class HomeController extends Controller
 
     public function prodtectDetails(Request $request)
     {
-        $data = $this->getProductData($request);        
-        return view('frontend.productDetails', compact('data'));
+        $data = $this->getProductData($request);
+        $relatedProducts = [];
+        if(!empty($data[0]->category_id)) {
+            $relatedProducts = $this->getCateProductData($data[0]->category_id);
+        }
+        
+        return view('frontend.productDetails', compact('data','relatedProducts'));
     }
 
 
@@ -166,9 +171,29 @@ class HomeController extends Controller
         }
 
         // Filter by proId
-        if ($request->has('proId')) {
-            $proId = $request->input('proId');
-            $query->where('product_id', $proId);
+        if ($request->has('prodId')) {
+            $proId = $request->input('prodId');
+            $query->where('products.product_id', $proId);
+        }
+
+        // Retrieve results
+        $data = $query->paginate(10);
+        $data = ProductsResource::collection($data);
+        return $data;
+    }
+
+
+    private function getCateProductData($cateId)
+    {
+        $query = Products::query()
+        ->select('products.*', 'categories.name as category_name')
+        ->leftJoin('categories', 'categories.id', '=', 'products.category_id')
+        ->where('products.status','Active');
+
+       
+        // Filter by cateId
+        if ($cateId) {           
+            $query->where('category_id', $cateId);
         }
 
         // Retrieve results
