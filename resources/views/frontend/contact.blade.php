@@ -2,19 +2,6 @@
 @section('breadcrum','Contact Us')
 @section('content')
 
-<!--contact map start-->
-<div class="contact_map mt-30">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="map-area">
-                    <div id="googleMap"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!--contact map end-->
 
 <!--contact area start-->
 <div class="contact_area">

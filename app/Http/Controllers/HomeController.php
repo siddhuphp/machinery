@@ -129,7 +129,7 @@ class HomeController extends Controller
      */
     public function about()
     {
-        $about = [];
+        $about = About::first();
         return view('frontend.about', compact('about'));
     }
 

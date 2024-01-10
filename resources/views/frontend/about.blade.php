@@ -1,7 +1,10 @@
 @extends('frontend.layout')
 @section('breadcrum','About')
 @section('content')
-
+@php 
+//var_dump($about);
+//echo $about->about;
+@endphp
 
 <!--about section area -->
 <div class="about_section mt-32">
@@ -9,7 +12,7 @@
         <div class="row align-items-center">
             <div class="col-12">
                 <div class="about_thumb">
-                    <img src="assets/img/about/about1.jpg" alt="">
+                    <img src="{{ asset('frontend/assets/img/about/about1.jpg') }}" alt="">
                 </div>
 
                 <div class="about_content">
@@ -34,7 +37,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single_chose">
                     <div class="chose_icone">
-                        <img src="assets/img/about/About_icon1.jpg" alt="">
+                        <img src="{{ asset('frontend/assets/img/about/About_icon1.jpg') }}" alt="">
                     </div>
                     <div class="chose_content">
                         <h3>Creative Design</h3>
@@ -46,7 +49,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single_chose">
                     <div class="chose_icone">
-                        <img src="assets/img/about/About_icon2.jpg" alt="">
+                        <img src="{{ asset('frontend/assets/img/about/About_icon2.jpg') }}" alt="">
                     </div>
                     <div class="chose_content">
                         <h3>100% Money Back Guarantee</h3>
@@ -58,7 +61,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single_chose">
                     <div class="chose_icone">
-                        <img src="assets/img/about/About_icon3.jpg" alt="">
+                        <img src="{{ asset('frontend/assets/img/about/About_icon3.jpg') }}" alt="">
                     </div>
                     <div class="chose_content">
                         <h3>Online Support 24/7</h3>
@@ -79,11 +82,11 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single_gallery_section">
                     <div class="gallery_thumb">
-                        <img src="assets/img/service/services2.jpg" alt="">
+                        <img src="{{ asset('frontend/assets/img/service/services2.jpg') }}" alt="">
                     </div>
                     <div class="about_gallery_content">
                         <h3>What do we do?</h3>
-                        <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.</p>
+                        <p>{{ $about->about }}</p>
 
                     </div>
                 </div>
@@ -91,11 +94,11 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single_gallery_section">
                     <div class="gallery_thumb">
-                        <img src="assets/img/service/services1.jpg" alt="">
+                        <img src="{{ asset('frontend/assets/img/service/services1.jpg') }}" alt="">
                     </div>
                     <div class="about_gallery_content">
                         <h3>Our Mission</h3>
-                        <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.</p>
+                        <p>{{ $about->mission }}</p>
 
                     </div>
                 </div>
@@ -103,11 +106,11 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single_gallery_section">
                     <div class="gallery_thumb">
-                        <img src="assets/img/service/services3.jpg" alt="">
+                        <img src="{{ asset('frontend/assets/img/service/services3.jpg') }}" alt="">
                     </div>
                     <div class="about_gallery_content">
-                        <h3>History Of Us</h3>
-                        <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima.</p>
+                        <h3>Our Vision</h3>
+                        <p>{{ $about->vision }}</p>
 
                     </div>
                 </div>
@@ -130,7 +133,7 @@
                 <div class="col-12">
                     <div class="single_testimonial">
                         <p>These guys have been absolutely outstanding. Perfect Themes and the best of all that you have many options to choose! Best Support team ever! Very fast responding! Thank you very much! I highly recommend this theme and these people!</p>
-                        <img src="assets/img/about/testimonial4.jpg" alt="">
+                        <img src="{{ asset('frontend/assets/img/about/testimonial4.jpg') }}" alt="">
                         <span class="name">Kathy Young</span>
                         <span class="job_title">CEO of SunPark</span>
                         <div class="product_ratting">
@@ -147,7 +150,7 @@
                 <div class="col-12">
                     <div class="single_testimonial">
                         <p>These guys have been absolutely outstanding. Perfect Themes and the best of all that you have many options to choose! Best Support team ever! Very fast responding! Thank you very much! I highly recommend this theme and these people!</p>
-                        <img src="assets/img/about/testimonial5.jpg" alt="">
+                        <img src="{{ asset('frontend/assets/img/about/testimonial5.jpg') }}" alt="">
                         <span class="name">Kathy Young</span>
                         <span class="job_title">CEO of SunPark</span>
                         <div class="product_ratting">
@@ -164,7 +167,7 @@
                 <div class="col-12">
                     <div class="single_testimonial">
                         <p>These guys have been absolutely outstanding. Perfect Themes and the best of all that you have many options to choose! Best Support team ever! Very fast responding! Thank you very much! I highly recommend this theme and these people!</p>
-                        <img src="assets/img/about/testimonial6.png" alt="">
+                        <img src="{{ asset('frontend/assets/img/about/testimonial6.png" alt="">
                         <span class="name">Kathy Young</span>
                         <span class="job_title">CEO of SunPark</span>
                         <div class="product_ratting">
