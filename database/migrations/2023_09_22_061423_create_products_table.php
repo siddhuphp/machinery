@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('product_id', 50)->unique('pro_');
-            $table->string('name', 20);
+            $table->string('name', 250);
             $table->string('short_desc', 500);
             $table->text('description');
             $table->enum('status', ['Active', 'Inactive']);
