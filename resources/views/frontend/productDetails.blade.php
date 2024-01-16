@@ -11,7 +11,7 @@
 
                         <div id="img-1" class="zoomWrapper single-zoom">
                             <a href="#">
-                                <img id="zoom1" src="{{ asset('frontend/assets/img/product/product15.jpg') }}" data-zoom-image="assets/img/product/product15.jpg') }}" alt="big-1">
+                                <img id="zoom1" src="{{ asset('storage/'.$data[0]->product_image) }}" data-zoom-image="{{ asset('storage/'.$data[0]->product_image) }}" alt="big-1">
                             </a>
                         </div>
 
@@ -148,8 +148,8 @@
                                 <p class="manufacture_product"><a href="#">{{$product->category_name}}</a></p>
                             </div>
                             <div class="product_thumb">
-                                <a class="primary_img" href="product-details.html"><img src="{{ asset('storage/'.$product->productImage) }}" alt=""></a>
-                                <a class="secondary_img" href="product-details.html"><img src="{{ asset('storage/'.$product->productImage) }}" alt=""></a>
+                                <a class="primary_img" href="product-details.html"><img src="{{ asset('storage/'.$product->product_image) }}" alt=""></a>
+                                <a class="secondary_img" href="product-details.html"><img src="{{ asset('storage/'.$product->product_image) }}" alt=""></a>
                                 <!-- <div class="label_product">
                                     <span class="label_sale">-57%</span>
                                 </div> -->
