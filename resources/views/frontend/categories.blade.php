@@ -84,8 +84,8 @@
                                     <p class="manufacture_product"><a href="#">{{$product->category_name}}</a></p>
                                 </div>
                                 <div class="product_thumb">
-                                    <a class="primary_img" href="{{ route('product-details', ['prodId' => $product->product_id]) }}"><img src="{{ $product->productImage }}" alt=""></a>
-                                    <a class="secondary_img" href="{{ route('product-details', ['prodId' => $product->product_id]) }}"><img src="{{ $product->productImage }}" alt=""></a>
+                                    <a class="primary_img" href="{{ route('product-details', ['prodId' => $product->product_id]) }}"><img src="{{ $product->product_image }}" alt=""></a>
+                                    <a class="secondary_img" href="{{ route('product-details', ['prodId' => $product->product_id]) }}"><img src="{{ $product->product_image }}" alt=""></a>
                                     <!-- <div class="label_product">
                                         <span class="label_sale">-47%</span>
                                     </div>
