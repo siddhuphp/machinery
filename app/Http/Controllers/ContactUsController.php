@@ -11,35 +11,9 @@ class ContactUsController extends Controller
 {
     use HttpResponses;
    
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreProductRequest $request)
-    {
-        $request->validated();        
+    
 
-        $data = Products::create([
-            'name' => $request->name,
-            'status' => $request->status,
-            'short_desc' => $request->short_desc,
-            'description' => $request->description,
-            'price' => $request->price,
-            'offer_price' => $request->offer_price,
-            'category_id' => $request->category_id,
-            'product_image' => $imagePath,
-            'meta_title' => $request->meta_title,
-            'meta_keywords' => $request->meta_title,
-            'meta_desc' => $request->meta_desc,
-            'created_by' => $request->user()->user_id,
-            'product_id' => uniqid("pro_") . date('YmdHis') . uniqid(),
-        ]);
-
-        return $this->success([
-            'Product' => ProductsResource::collection([$data]),
-        ], 'Product registered successfully!', 201);
-    }
-
-    public function sendMail(Request $request)
+    public function sendMail(ContactUsRequest $request)
     {
         $fields = $request->validate(
             [
