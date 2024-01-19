@@ -51,7 +51,7 @@ class ContactUsController extends Controller
         );
         $fields['cc'] = 'sathireddyeee@gmail.com';
         $fields['bcc'] = 'siddharthaesunuri@gmail.com';
-        $fields['to'] = 'info@ssinstitution.com';
+        $fields['to'] = 'info@resellrebuy.com';
 
         $this->sender($fields);
         $this->receiver($fields);
