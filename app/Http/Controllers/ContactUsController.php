@@ -25,7 +25,7 @@ class ContactUsController extends Controller
                 'message' => 'required|string'
             ]
         );
-        $fields['cc'] = 'sathireddyeee@gmail.com';
+        $fields['cc'] = 'vinodk120@gmail.com';
         $fields['bcc'] = 'siddharthaesunuri@gmail.com';
         $fields['to'] = 'info@resellrebuy.com';
 

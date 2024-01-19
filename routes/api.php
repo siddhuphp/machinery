@@ -45,4 +45,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/about-us/update', [AboutController::class, 'update']);
 });
 
-Route::post('/api-mail', [ContactUsController::class, 'sendMail'])->name('api-mail');
+Route::post('/apimail', [ContactUsController::class, 'sendMail'])->name('api-mail');
