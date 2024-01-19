@@ -32,9 +32,9 @@ class ContactUsController extends Controller
         $s = $this->sender($fields);
         $r = $this->receiver($fields);
 
-        print_r($s);
-        echo "<pre>";
-        print_r($r);
+        dd($s);
+        
+        dd($r);
 
 
         
