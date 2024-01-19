@@ -29,16 +29,21 @@ class ContactUsController extends Controller
         $fields['bcc'] = 'siddharthaesunuri@gmail.com';
         $fields['to'] = 'info@resellrebuy.com';
 
-        $this->sender($fields);
-        $this->receiver($fields);
+        $s = $this->sender($fields);
+        $r = $this->receiver($fields);
 
-        return redirect('contact')->with('success', 'successfully updated !');
+        print_r($s);
+        echo "<pre>";
+        print_r($r);
+
+
+        
     }
 
     function sender(array $data)
     {
         $data['title'] = "We have received your query";
-        Mail::to($data['email'])
+        return Mail::to($data['email'])
             ->cc($data['cc'])
             ->bcc($data['bcc'])
             ->send(new TestEmail($data));
@@ -47,7 +52,7 @@ class ContactUsController extends Controller
     function receiver(array $data)
     {
         $data['title'] = "You have received a query";
-        Mail::to($data['email'])
+        return Mail::to($data['email'])
             ->cc($data['cc'])
             ->bcc($data['bcc'])
             ->send(new TestEmail($data));
