@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactUsController;
 
 
 /*
@@ -61,4 +62,4 @@ Route::get('/categories', [HomeController::class, 'categories'])->name('categori
 Route::get('/prod', [HomeController::class, 'prodtectDetails'])->name('product-details');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about-us');
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact-us');
-Route::post('/mail', [HomeController::class, 'sendMail'])->name('mail');
+Route::post('/mail', [ContactUsController::class, 'sendMail'])->name('mail');
