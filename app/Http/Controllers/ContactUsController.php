@@ -6,6 +6,8 @@ use App\Http\Requests\ContactUsRequest;
 use Illuminate\Http\Request;
 use App\Traits\HttpResponses;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestEmail;
 
 class ContactUsController extends Controller
 {
