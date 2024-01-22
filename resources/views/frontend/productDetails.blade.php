@@ -61,20 +61,24 @@
                             </div>
 
                             <div class="product_review_form">
-                                        <form action="#">
+                                        <form action="#" method="POST">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <label for="review_comment">Enquire </label>
-                                                    <textarea name="comment" id="review_comment"></textarea>
+                                                    <textarea name="comment" id="review_comment" required></textarea>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
                                                     <label for="author">Name</label>
-                                                    <input id="author" type="text">
-
+                                                    <input id="author" type="text" name="name" required>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
+                                                    <label for="Phone">Phone </label>
+                                                    <input id="Phone" type="Phone" name="phoneno" required>
+                                                </div>
+                                                <div class="col-12">
                                                     <label for="email">Email </label>
-                                                    <input id="email" type="text">
+                                                    <input id="email" type="email" name="email" required>
+                                                    <input  type="hidden" name="prodId" value="{{ $data[0]->product_id }}">
                                                 </div>
                                             </div>
                                             <button type="submit">Enquire</button>
