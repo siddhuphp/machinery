@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestEmail;
 
+use Illuminate\Mail\Events\MessageSent;
+
 class ContactUsController extends Controller
 {
     use HttpResponses;
@@ -29,12 +31,10 @@ class ContactUsController extends Controller
         $fields['bcc'] = 'siddharthaesunuri@gmail.com';
         $fields['to'] = 'info@resellrebuy.com';
 
-        $s = $this->sender($fields);
-        $r = $this->receiver($fields);
-
-        dd($s);
-        
-        dd($r);
+        $sStatus = $this->sender($fields);
+        $rStatus = $this->receiver($fields);
+    
+        dd($sStatus, $rStatus);
 
 
         
@@ -43,32 +43,29 @@ class ContactUsController extends Controller
     function sender(array $data)
     {
         $data['title'] = "We have received your query";
-        $mail = Mail::to($data['email'])
+        try {
+        Mail::to($data['email'])
             ->cc($data['cc'])
             ->bcc($data['bcc'])
             ->send(new TestEmail($data));
-        // Check if the email was sent successfully
-        if ($mail->failures()) {
-            return 'Email sending failed for some recipients';
+            return 'Email sent successfully';
+        } catch (\Exception $e) {
+            return 'Email sending failed: ' . $e->getMessage();
         }
-
-        return 'Email sent successfully';
     }
 
     function receiver(array $data)
     {
         $data['title'] = "You have received a query";
-        $mail = Mail::to($data['email'])
+        try {
+        Mail::to($data['email'])
             ->cc($data['cc'])
             ->bcc($data['bcc'])
             ->send(new TestEmail($data));
-
-             // Check if the email was sent successfully
-        if ($mail->failures()) {
-            return 'Email sending failed for some recipients';
+            return 'Email sent successfully';
+        } catch (\Exception $e) {
+            return 'Email sending failed: ' . $e->getMessage();
         }
-
-        return 'Email sent successfully';
     }
  
 }
