@@ -280,7 +280,7 @@ a {
         <tbody>
         <tr>
             <td class="title" width="300">Company Name</td>
-            <td class="subject" width="300"><a class="strong" href="https://ssinstitution.com/" target="_blank">https://ssinstitution.com/</a></td>
+            <td class="subject" width="300"><a class="strong" href="https://resellrebuy.com/" target="_blank">https://resellrebuy.com/</a></td>
         </tr>
         <tr>
             <td class="border" colspan="2">&nbsp;</td>
@@ -299,7 +299,7 @@ a {
                     <tbody>
                     <tr>
                         <td class="padded">
-                          <h1>{{ $data['title'] }}</h1>
+                          <h4>{{ $data['title'] }}</h4>
                           <p>{{ $data['message'] }}</p>
                          
                           <!-- <p style="text-align:center;"><a href="#" class="btn">EXAMPLE BUTTON</a></p>
@@ -328,12 +328,12 @@ a {
             <td class="signature" width="300">
                 <p>
                     With best regards,<br>
-                    SS INSTITUTION<br>
+                    ResellRebuy<br>
                     BEHIND HDFC BANK, 2nd line, Akkayapalem<br>
                     Visakhapatnam 530016<br>
                     </p>
                 <p>
-                    Support: <a class="strong" href="mailto:#" target="_blank">info@ssinstitution.com</a>
+                    Support: <a class="strong" href="mailto:#" target="_blank">info@resellrebuy.com</a>
                 </p>
             </td>
             <!-- <td class="subscription" width="300">

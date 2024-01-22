@@ -43,19 +43,32 @@ class ContactUsController extends Controller
     function sender(array $data)
     {
         $data['title'] = "We have received your query";
-        return Mail::to($data['email'])
+        $mail = Mail::to($data['email'])
             ->cc($data['cc'])
             ->bcc($data['bcc'])
             ->send(new TestEmail($data));
+        // Check if the email was sent successfully
+        if ($mail->failures()) {
+            return 'Email sending failed for some recipients';
+        }
+
+        return 'Email sent successfully';
     }
 
     function receiver(array $data)
     {
         $data['title'] = "You have received a query";
-        return Mail::to($data['email'])
+        $mail = Mail::to($data['email'])
             ->cc($data['cc'])
             ->bcc($data['bcc'])
             ->send(new TestEmail($data));
+
+             // Check if the email was sent successfully
+        if ($mail->failures()) {
+            return 'Email sending failed for some recipients';
+        }
+
+        return 'Email sent successfully';
     }
  
 }
