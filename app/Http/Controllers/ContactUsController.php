@@ -67,5 +67,27 @@ class ContactUsController extends Controller
             return 'Email sending failed: ' . $e->getMessage();
         }
     }
+
+
+    public function contactUs(ContactUsRequest $request)
+    {
+        $request->validated();
+
+        // $data = [
+        //     'cc' => $request->about,
+        //     'bcc' => $request->mission,
+        //     'to' => $request->vision,
+        // ];
+
+        $fields['cc'] = 'vinodk120@gmail.com';
+        $fields['bcc'] = 'siddharthaesunuri@gmail.com';
+        $fields['to'] = 'info@resellrebuy.com';
+
+        $sStatus = $this->sender($fields);
+        $rStatus = $this->receiver($fields);
+    
+        dd($sStatus, $rStatus);
+
+    }
  
 }

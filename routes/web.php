@@ -62,4 +62,4 @@ Route::get('/categories', [HomeController::class, 'categories'])->name('categori
 Route::get('/prod', [HomeController::class, 'prodtectDetails'])->name('product-details');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about-us');
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact-us');
-Route::post('/mail', [ContactUsController::class, 'sendMail'])->name('mail');
+Route::post('/mail', [ContactUsController::class, 'contactUs'])->name('mail');

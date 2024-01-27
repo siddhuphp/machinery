@@ -138,8 +138,7 @@ class HomeController extends Controller
      */
     public function contact()
     {
-        $about = [];
-        return view('frontend.contact', compact('about'));
+        return view('frontend.contact');
     }
 
 

@@ -19,9 +19,19 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                 <div class="contact_message form">
                     <h3>Tell us your project</h3>
-                    <form id="contact-form" method="POST" action="https://htmldemo.net/autima/autima/assets/mail.php">
+                    <form id="contact-form" method="POST" action="{{ route('mail') }}">
+                    @csrf
                         <p>
                             <label> Your Name (required)</label>
                             <input name="name" placeholder="Name *" type="text">
@@ -31,6 +41,10 @@
                             <input name="email" placeholder="Email *" type="email">
                         </p>
                         <p>
+                            <label> Your Phone (required)</label>
+                            <input name="phone" placeholder="Phone *" type="text">
+                        </p>
+                        <p>
                             <label> Subject</label>
                             <input name="subject" placeholder="Subject *" type="text">
                         </p>
@@ -38,8 +52,8 @@
                             <label> Your Message</label>
                             <textarea placeholder="Message *" name="message" class="form-control2"></textarea>
                         </div>
-                        <button type="submit"> Send</button>
-                        <p class="form-messege"></p>
+                        <button type="submit"> Send </button>
+                        <!-- <p class="form-messege"></p> -->
                     </form>
 
                 </div>
