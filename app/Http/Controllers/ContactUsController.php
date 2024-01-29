@@ -92,7 +92,7 @@ class ContactUsController extends Controller
     
         if($sStatus && $rStatus)
         {
-            return redirect('contact-us')->with('success', 'Thank You, We received your query!');
+            return redirect('/contact-us')->with('success', 'Thank You, We received your query!');
         }
         return redirect('/contact-us');       
     }
