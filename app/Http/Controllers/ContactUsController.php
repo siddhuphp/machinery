@@ -94,5 +94,32 @@ class ContactUsController extends Controller
         }
         return redirect('/contact-us');       
     }
+
+
+    public function productEnquire(ContactUsRequest $request)
+    {
+        $request->validated();
+
+        $fields = [
+            'name' => $request->name,
+            'user_email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ];
+
+        $fields['cc'] = 'vinodk120@gmail.com';
+        $fields['bcc'] = 'siddharthaesunuri@gmail.com';
+        $fields['company_email'] = 'info@resellrebuy.com';
+
+        $sStatus = $this->sender($fields);
+        $rStatus = $this->receiver($fields);
+    
+        if($sStatus && $rStatus)
+        {
+            return redirect('/contact-us')->with('success', 'Thank You, We received your query!');
+        }
+        return redirect('/contact-us');       
+    }
  
 }
