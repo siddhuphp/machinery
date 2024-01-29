@@ -28,6 +28,12 @@
                     </ul>
                 </div>
             @endif
+            
+            @if(Session::has('success'))
+            <div class="alert alert-success" role="alert">
+            {{Session::get('success')}}
+            </div>
+            @endif
                 <div class="contact_message form">
                     <h3>Tell us your project</h3>
                     <form id="contact-form" method="POST" action="{{ route('mail') }}">

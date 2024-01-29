@@ -44,13 +44,14 @@ class ContactUsController extends Controller
     {
         $data['title'] = "We have received your query";
         try {
-        Mail::to($data['email'])
+        Mail::to($data['user_email'])
             ->cc($data['cc'])
             ->bcc($data['bcc'])
             ->send(new TestEmail($data));
-            return 'Email sent successfully';
+            return 1;
         } catch (\Exception $e) {
-            return 'Email sending failed: ' . $e->getMessage();
+            return 0;
+           // return 'Email sending failed: ' . $e->getMessage();
         }
     }
 
@@ -58,13 +59,14 @@ class ContactUsController extends Controller
     {
         $data['title'] = "You have received a query";
         try {
-        Mail::to($data['email'])
+        Mail::to($data['company_email'])
             ->cc($data['cc'])
             ->bcc($data['bcc'])
             ->send(new TestEmail($data));
-            return 'Email sent successfully';
+            return 1;
         } catch (\Exception $e) {
-            return 'Email sending failed: ' . $e->getMessage();
+            return 0;
+           // return 'Email sending failed: ' . $e->getMessage();
         }
     }
 
@@ -73,22 +75,26 @@ class ContactUsController extends Controller
     {
         $request->validated();
 
-        // $data = [
-        //     'cc' => $request->about,
-        //     'bcc' => $request->mission,
-        //     'to' => $request->vision,
-        // ];
+        $fields = [
+            'name' => $request->about,
+            'user_email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ];
 
         $fields['cc'] = 'vinodk120@gmail.com';
         $fields['bcc'] = 'siddharthaesunuri@gmail.com';
-        $fields['to'] = 'info@resellrebuy.com';
+        $fields['company_email'] = 'info@resellrebuy.com';
 
         $sStatus = $this->sender($fields);
         $rStatus = $this->receiver($fields);
     
-        dd($sStatus, $rStatus);
-    //    return redirect('/contact-us');
-    //    return redirect('admin-products')->with('success', 'Product updated successfully!');
+        if($sStatus && $rStatus)
+        {
+            return redirect('contact-us')->with('success', 'Thank You, We received your query!');
+        }
+        return redirect('/contact-us');       
     }
  
 }
