@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Autima - Car Accessories Shop HTML Template </title>
+  <title>Resell - Rebuy </title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Favicon -->
@@ -58,7 +58,7 @@
         <div class="row align-items-center">
           <div class="col-lg-3 col-md-3">
             <div class="logo">
-              <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a>
+              <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/img/logo/Resell-rebuy-logo.png') }}" alt=""></a>
             </div>
           </div>
           <div class="col-lg-9 col-md-9">
@@ -102,6 +102,64 @@
 
   </header>
   <!--header area end-->
+
+
+  <!--Offcanvas menu area start-->
+  <div class="off_canvars_overlay"></div>
+  <div class="Offcanvas_menu">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <div class="canvas_open">
+                      <span>MENU</span>
+                      <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                  </div>
+                  <div class="Offcanvas_menu_wrapper">
+
+                      <div class="canvas_close">
+                          <a href="#"><i class="ion-android-close"></i></a>
+                      </div>
+                      
+                      <div class="Offcanvas_follow">
+                          <label>Follow Us:</label>
+                          <ul class="follow_link">
+                              <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                              <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                              <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                              <li><a href="#"><i class="ion-social-youtube"></i></a></li>
+                          </ul>
+                      </div>
+                      <div class="search-container">
+                          <form action="#">
+                              <div class="search_box">
+                                  <input placeholder="Search entire store here ..." type="text">
+                                  <button type="submit"><i class="ion-ios-search-strong"></i></button>
+                              </div>
+                          </form>
+                      </div>
+                      <div id="menu" class="text-left ">
+                          <ul class="offcanvas_main_menu">                            
+                              <li class="menu-item-has-children">
+                                  <a href="{{ route('home') }}">home</a>
+                              </li>
+                              <li class="menu-item-has-children">
+                                  <a href="{{ route('categories-list') }}">category</a>
+                              </li>
+                              <li class="menu-item-has-children">
+                                  <a href="{{ route('about-us') }}"> about Us</a>
+                              </li>
+                              <li class="menu-item-has-children">
+                                  <a href="{{ route('contact-us') }}"> Contact Us</a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
+  <!--Offcanvas menu area end-->
 
 
 
