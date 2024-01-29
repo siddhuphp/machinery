@@ -87,7 +87,8 @@ class ContactUsController extends Controller
         $rStatus = $this->receiver($fields);
     
         dd($sStatus, $rStatus);
-
+    //    return redirect('/contact-us');
+    //    return redirect('admin-products')->with('success', 'Product updated successfully!');
     }
  
 }

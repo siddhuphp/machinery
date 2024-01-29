@@ -34,23 +34,23 @@
                     @csrf
                         <p>
                             <label> Your Name (required)</label>
-                            <input name="name" placeholder="Name *" type="text">
+                            <input name="name" placeholder="Name *" type="text" required value="{{ old('name') }}">
                         </p>
                         <p>
                             <label> Your Email (required)</label>
-                            <input name="email" placeholder="Email *" type="email">
+                            <input name="email" placeholder="Email *" type="email" required value="{{ old('email') }}">
                         </p>
                         <p>
                             <label> Your Phone (required)</label>
-                            <input name="phone" placeholder="Phone *" type="text">
+                            <input name="phone" placeholder="Phone *" type="text" required value="{{ old('phone') }}">
                         </p>
                         <p>
                             <label> Subject</label>
-                            <input name="subject" placeholder="Subject *" type="text">
+                            <input name="subject" placeholder="Subject *" type="text" required value="{{ old('subject') }}">
                         </p>
                         <div class="contact_textarea">
                             <label> Your Message</label>
-                            <textarea placeholder="Message *" name="message" class="form-control2"></textarea>
+                            <textarea placeholder="Message *" name="message" required class="form-control2">{{ old('message') }}</textarea>
                         </div>
                         <button type="submit"> Send </button>
                         <!-- <p class="form-messege"></p> -->
