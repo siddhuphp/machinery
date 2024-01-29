@@ -19,17 +19,18 @@ class ContactUsController extends Controller
 
     public function sendMail(ContactUsRequest $request)
     {
-        $fields = $request->validate(
-            [
-                'name' => 'required|string|min:3',
-                'email' => 'required|email',
-                'subject' => 'required|string',
-                'message' => 'required|string'
-            ]
-        );
+        $request->validated();
+
+        $fields = [
+            'name' => $request->name,
+            'user_email' => $request->email,
+            'phone' => $request->phone,
+            'subject' => $request->subject,
+            'message' => $request->message,
+        ];
         $fields['cc'] = 'vinodk120@gmail.com';
         $fields['bcc'] = 'siddharthaesunuri@gmail.com';
-        $fields['to'] = 'info@resellrebuy.com';
+        $fields['company_email'] = 'info@resellrebuy.com';
 
         $sStatus = $this->sender($fields);
         $rStatus = $this->receiver($fields);
@@ -47,8 +48,8 @@ class ContactUsController extends Controller
             ->send(new TestEmail($data));
             return 1;
         } catch (\Exception $e) {
-            return 0;
-           // return 'Email sending failed: ' . $e->getMessage();
+            //return 0;
+            return 'Email sending failed: ' . $e->getMessage();
         }
     }
 
@@ -62,8 +63,8 @@ class ContactUsController extends Controller
             ->send(new TestEmail($data));
             return 1;
         } catch (\Exception $e) {
-            return 0;
-           // return 'Email sending failed: ' . $e->getMessage();
+            //return 0;
+           return 'Email sending failed: ' . $e->getMessage();
         }
     }
 
