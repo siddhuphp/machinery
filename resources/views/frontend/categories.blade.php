@@ -159,7 +159,7 @@
                                                 @php } @endphp  
                                         </div>
                                         <div class="cart_links_btn">
-                                            <a href="#" title="add to cart">Enquiry</a>
+                                            <a href="{{ route('product-details', ['prodId' => $product->product_id]) }}" title="add to cart">Enquiry</a>
                                         </div>
                                         <!-- <div class="action_links_btn">
                                             <ul>

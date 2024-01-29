@@ -77,11 +77,11 @@
                             <div class="col-lg-4 col-md-4 col-12 ">
                                 <div class="single_product">
                                     <div class="product_name grid_name">
-                                        <h3><a href="product-details.html">{{$product->name}}</a></h3>
-                                        <p class="manufacture_product"><a href="#">{{$product->category_name}}</a></p>
+                                        <h3><a href="{{ route('product-details', ['prodId' => $product->product_id]) }}">{{$product->name}}</a></h3>
+                                        <p class="manufacture_product"><a href="{{ route('categories-list', ['cateId' => $product->category_id]) }}">{{$product->category_name}}</a></p>
                                     </div>
                                     <div class="product_thumb">
-                                        <a class="primary_img" href="product-details.html"><img src="{{ $product->productImage }}" alt=""></a>
+                                        <a class="primary_img" href="{{ route('product-details', ['prodId' => $product->product_id]) }}"><img src="{{ asset('storage/'.$product->product_image) }}" alt=""></a>
                                        
                                     </div>
                                     <div class="product_content grid_content">
