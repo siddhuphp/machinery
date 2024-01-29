@@ -300,11 +300,11 @@ a {
                     <tr>
                         <td class="padded">
                           <h4>{{ $data['title'] }}</h4>
-                          <p><b>Name:</b>{{ $data['name'] }}</p>
-                          <p><b>Email:</b>{{ $data['user_email'] }}</p>
-                          <p><b>Phone:</b>{{ $data['phone'] }}</p>
-                          <p><b>Subject:</b>{{ $data['subject'] }}</p>
-                          <p><b>Message:</b>{{ $data['message'] }}</p>
+                          <p><b>Name: </b>{{ $data['name'] }}</p>
+                          <p><b>Email: </b>{{ $data['user_email'] }}</p>
+                          <p><b>Phone: </b>{{ $data['phone'] }}</p>
+                          <p><b>Subject: </b>{{ $data['subject'] }}</p>
+                          <p><b>Message: </b>{{ $data['message'] }}</p>
                          
                           <!-- <p style="text-align:center;"><a href="#" class="btn">EXAMPLE BUTTON</a></p>
                           <p style="text-align:center;">
