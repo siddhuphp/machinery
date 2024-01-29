@@ -58,7 +58,7 @@
         <div class="row align-items-center">
           <div class="col-lg-3 col-md-3">
             <div class="logo">
-              <a href="index.html"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a>
+              <a href="{{ route('home') }}"><img src="{{ asset('frontend/assets/img/logo/logo.png') }}" alt=""></a>
             </div>
           </div>
           <div class="col-lg-9 col-md-9">
@@ -113,7 +113,7 @@
         <div class="col-12">
           <div class="breadcrumb_content">
             <ul>
-              <li><a href="index.html">home</a></li>
+              <li><a href="{{ route('home') }}">home</a></li>
               <li>@yield('breadcrum','Sample title here') </li>
             </ul>
           </div>
