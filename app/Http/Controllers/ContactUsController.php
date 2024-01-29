@@ -34,10 +34,7 @@ class ContactUsController extends Controller
         $sStatus = $this->sender($fields);
         $rStatus = $this->receiver($fields);
     
-        dd($sStatus, $rStatus);
-
-
-        
+        dd($sStatus, $rStatus);        
     }
 
     function sender(array $data)
@@ -76,7 +73,7 @@ class ContactUsController extends Controller
         $request->validated();
 
         $fields = [
-            'name' => $request->about,
+            'name' => $request->name,
             'user_email' => $request->email,
             'phone' => $request->phone,
             'subject' => $request->subject,
