@@ -77,7 +77,7 @@
                             @endif
 
                             <div class="product_review_form">
-                                        <form action="{{ route('productEnquire') }}" method="POST">
+                                        <form action="{{ route('product-enquire') }}" method="POST">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <label for="review_comment">Enquire </label>
