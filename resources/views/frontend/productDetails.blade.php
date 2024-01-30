@@ -78,6 +78,7 @@
 
                             <div class="product_review_form">
                                         <form action="{{ route('product-enquire') }}" method="POST">
+                                        @csrf
                                             <div class="row">
                                                 <div class="col-12">
                                                     <label for="review_comment">Enquire </label>
