@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product_d_right">
-                        <form action="#">
+                        <!-- <form action="#"> -->
 
                             <h1>{{ $data[0]->name }}</h1>
                             <div class="product_nav">
@@ -102,7 +102,7 @@
                                         </form>
                                     </div>
 
-                        </form>
+                        <!-- </form> -->
                         <br><br>
                         <div class="priduct_social">
                             <ul>
