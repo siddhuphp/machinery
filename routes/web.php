@@ -63,3 +63,4 @@ Route::get('/prod', [HomeController::class, 'prodtectDetails'])->name('product-d
 Route::get('/about-us', [HomeController::class, 'about'])->name('about-us');
 Route::get('/contact-us', [HomeController::class, 'contact'])->name('contact-us');
 Route::post('/mail', [ContactUsController::class, 'contactUs'])->name('mail');
+Route::post('/product-enquire', [ContactUsController::class, 'productEnquire'])->name('productEnquire');

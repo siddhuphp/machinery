@@ -60,12 +60,28 @@
                                 <span>Category: <a href="#">{{ $data[0]->category_name }}</a></span>
                             </div>
 
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            
+                            @if(Session::has('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {{Session::get('success')}}
+                                </div>
+                            @endif
+
                             <div class="product_review_form">
-                                        <form action="#" method="POST">
+                                        <form action="{{ route('product-enquire') }}" method="POST">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <label for="review_comment">Enquire </label>
-                                                    <textarea name="comment" id="review_comment" required></textarea>
+                                                    <textarea name="enquire" id="enquire" required></textarea>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
                                                     <label for="author">Name</label>
@@ -79,6 +95,7 @@
                                                     <label for="email">Email </label>
                                                     <input id="email" type="email" name="email" required>
                                                     <input  type="hidden" name="prodId" value="{{ $data[0]->product_id }}">
+                                                    <input  type="hidden" name="prodName" value="{{ $data[0]->name }}">
                                                 </div>
                                             </div>
                                             <button type="submit">Enquire</button>

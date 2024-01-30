@@ -303,8 +303,16 @@ a {
                           <p><b>Name: </b>{{ $data['name'] }}</p>
                           <p><b>Email: </b>{{ $data['user_email'] }}</p>
                           <p><b>Phone: </b>{{ $data['phone'] }}</p>
+                          @if(!empty($data['contactEnquire']) && $data['contactEnquire'] == true)
                           <p><b>Subject: </b>{{ $data['subject'] }}</p>
                           <p><b>Message: </b>{{ $data['message'] }}</p>
+                          @endif
+
+
+                          @if(!empty($data['productEnquire']) && $data['productEnquire'] == true)
+                          <p><b>Enquire: </b>{{ $data['enquire'] }}</p>
+                          <p><b>Product: </b>{{ $data['prodName'] }}</p>
+                          @endif
                          
                           <!-- <p style="text-align:center;"><a href="#" class="btn">EXAMPLE BUTTON</a></p>
                           <p style="text-align:center;">
