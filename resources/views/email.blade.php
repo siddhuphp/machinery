@@ -304,14 +304,14 @@ a {
                           <p><b>Email: </b>{{ $data['user_email'] }}</p>
                           <p><b>Phone: </b>{{ $data['phone'] }}</p>
 
-                          
-                          @if(!empty($data['contactEnquire']) && $data['contactEnquire'] == true)
+
+                          @if(!empty($data['contactEnquire']) && isset($data['contactEnquire']))
                           <p><b>Subject: </b>{{ $data['subject'] }}</p>
                           <p><b>Message: </b>{{ $data['message'] }}</p>
                           @endif
 
 
-                          @if(!empty($data['productEnquire']) && $data['productEnquire'] == true)
+                          @if(!empty($data['productEnquire']) && isset($data['productEnquire']))
                           <p><b>Enquire: </b>{{ $data['enquire'] }}</p>
                           <p><b>Product: </b>{{ $data['prodName'] }}</p>
                           @endif
