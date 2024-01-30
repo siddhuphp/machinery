@@ -82,19 +82,19 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <label for="review_comment">Enquire </label>
-                                                    <textarea name="enquire" id="enquire" required></textarea>
+                                                    <textarea name="enquire" id="enquire" required>{{ old('enquire') }}</textarea>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
                                                     <label for="author">Name</label>
-                                                    <input id="author" type="text" name="name" required>
+                                                    <input id="author" type="text" name="name" required value="{{ old('name') }}">
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
                                                     <label for="Phone">Phone </label>
-                                                    <input id="Phone" type="Phone" name="phoneno" required>
+                                                    <input id="Phone" type="Phone" name="phone" required value="{{ old('phone') }}">
                                                 </div>
                                                 <div class="col-12">
                                                     <label for="email">Email </label>
-                                                    <input id="email" type="email" name="email" required>
+                                                    <input id="email" type="email" name="email" required value="{{ old('email') }}">
                                                     <input  type="hidden" name="prodId" value="{{ $data[0]->product_id }}">
                                                     <input  type="hidden" name="prodName" value="{{ $data[0]->name }}">
                                                 </div>
