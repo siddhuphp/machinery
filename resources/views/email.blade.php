@@ -305,13 +305,13 @@ a {
                           <p><b>Phone: </b>{{ $data['phone'] }}</p>
 
 
-                          @if(!empty($data['contactEnquire']) && isset($data['contactEnquire']))
+                          @if(isset($data['contactEnquire']) && !empty($data['contactEnquire']))
                           <p><b>Subject: </b>{{ $data['subject'] }}</p>
                           <p><b>Message: </b>{{ $data['message'] }}</p>
                           @endif
 
 
-                          @if(!empty($data['productEnquire']) && isset($data['productEnquire']))
+                          @if(isset($data['productEnquire']) && !empty($data['productEnquire']))
                           <p><b>Enquire: </b>{{ $data['enquire'] }}</p>
                           <p><b>Product: </b>{{ $data['prodName'] }}</p>
                           @endif
