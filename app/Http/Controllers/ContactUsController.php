@@ -121,9 +121,9 @@ class ContactUsController extends Controller
     
         if($sStatus && $rStatus)
         {
-            return redirect('/product-details?prodId='.$request->prodId)->with('success', 'Thank You, We received your query!');
+            return redirect('/prod?prodId='.$request->prodId)->with('success', 'Thank You, We received your query!');
         }
-        return redirect('/product-details?prodId='.$request->prodId);       
+        return redirect('/prod?prodId='.$request->prodId);       
     }
  
 }
