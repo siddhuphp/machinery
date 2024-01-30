@@ -109,6 +109,7 @@ class ContactUsController extends Controller
             'enquire' => $request->enquire,
             'prodId' => $request->prodId,
             'prodName' => $request->prodName,
+            'subject' => 'Enquire on '.$request->prodName,
         ];
 
         $fields['cc'] = 'vinodk120@gmail.com';
