@@ -119,7 +119,7 @@ class ContactUsController extends Controller
 
         $sStatus = $this->sender($fields);
         $rStatus = $this->receiver($fields);
-        dd($sStatus, $rStatus);
+        //dd($sStatus, $rStatus);
         if($sStatus && $rStatus)
         {
             return redirect('/prod?prodId='.$request->prodId)->with('success', 'Thank You, We received your query!');
