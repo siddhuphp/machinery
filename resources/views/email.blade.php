@@ -303,6 +303,8 @@ a {
                           <p><b>Name: </b>{{ $data['name'] }}</p>
                           <p><b>Email: </b>{{ $data['user_email'] }}</p>
                           <p><b>Phone: </b>{{ $data['phone'] }}</p>
+
+                          
                           @if(!empty($data['contactEnquire']) && $data['contactEnquire'] == true)
                           <p><b>Subject: </b>{{ $data['subject'] }}</p>
                           <p><b>Message: </b>{{ $data['message'] }}</p>

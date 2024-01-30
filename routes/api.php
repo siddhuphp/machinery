@@ -46,3 +46,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::post('/apimail', [ContactUsController::class, 'sendMail'])->name('api-mail');
+Route::post('/productmail', [ContactUsController::class, 'productEnquire'])->name('prod-mail');
