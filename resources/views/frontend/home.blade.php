@@ -12,7 +12,7 @@
                         <div class="slider_content">
                             <h2>PC200-C</h2>
                             <h1>Used Machines & Exraordinary Performance.</h1>
-                            <a class="button" href="shop.html">shopping now</a>
+                            <a class="button" href="shop.html">shop now</a>
                         </div>
                     </div>
                     <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/slider8.jpg') }}">
