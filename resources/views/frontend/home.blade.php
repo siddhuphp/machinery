@@ -10,23 +10,23 @@
                 <div class="slider_area slider_three owl-carousel">
                     <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/slider7.jpg') }}">
                         <div class="slider_content">
-                            <h2>GM 10 & 12</h2>
-                            <h1>Bolt Rear Disc Brake Conversions</h1>
+                            <h2>PC200-C</h2>
+                            <h1>Used Machines & Exraordinary Performance.</h1>
                             <a class="button" href="shop.html">shopping now</a>
                         </div>
                     </div>
                     <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/slider8.jpg') }}">
                         <div class="slider_content">
-                            <h2>Brade Wheels</h2>
-                            <h1>Total Alloy Wheels Protection</h1>
-                            <a class="button" href="shop.html">shopping now</a>
+                            <h2>Spare Parts</h2>
+                            <h1>Larger Catalogue</h1>
+                            <a class="button" href="shop.html">shop now</a>
                         </div>
                     </div>
                     <div class="single_slider d-flex align-items-center" data-bgimg="{{ asset('frontend/assets/img/slider/slider9.jpg') }}">
                         <div class="slider_content">
                             <h2>Top Quality</h2>
-                            <h1>Aftermarket Trobocharger Specialist</h1>
-                            <a class="button" href="shop.html">shopping now</a>
+                            <h1>Aftermarket Spares & Service</h1>
+                            <a class="button" href="shop.html">shop now</a>
                         </div>
                     </div>
                 </div>
@@ -36,9 +36,9 @@
                     <div class="banner_thumb">
                         <a href="shop.html"><img src="{{ asset('frontend/assets/img/bg/banner6.jpg') }}" alt=""></a>
                         <div class="banner_text">
-                            <h4>Jegs Oil</h4>
-                            <h3>Engine</h3>
-                            <h2>50% Off</h2>
+                            <h4>Tooth Points</h4>
+                            <h3>Excavator</h3>
+                            <h2>20% Off</h2>
                             <a href="shop.html">Shop Now</a>
                         </div>
                     </div>

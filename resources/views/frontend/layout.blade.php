@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Resell - Rebuy </title>
+  <title>Resell Rebuy </title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Favicon -->
@@ -87,7 +87,7 @@
               <nav>
                 <ul>
                   <li><a href="{{ route('home') }}">home</a></li>
-                  <li><a href="{{ route('categories-list') }}">category</a></li>
+                  <li><a href="{{ route('categories-list') }}">machinery</a></li>
                   <li><a href="{{ route('about-us') }}">about Us</a></li>
                   <li><a href="{{ route('contact-us') }}"> Contact Us</a></li>
                 </ul>
@@ -193,7 +193,7 @@
           <div class="call_action_inner">
             <div class="call_text">
               <h3>We Have <span>Recommendations</span> for You</h3>
-              <p>Take 30% off when you spend $150 or more with code Autima11</p>
+              <p>Take 20% off when you buy minumum of 50 Tooth Points.</p>
             </div>
             <div class="discover_now">
               <a href="#">discover now</a>
@@ -269,7 +269,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-6">
             <div class="copyright_area">
-              <p>Copyright &copy; 2021 <a href="#">Autima</a> All Right Reserved.</p>
+              <p>Copyright &copy; 2024 <a href="#">ResellRebuy.com |</a> All Right Reserved.</p>
             </div>
           </div>
           <div class="col-lg-6 col-md-6">

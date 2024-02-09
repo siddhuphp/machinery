@@ -10,11 +10,14 @@
             <div class="col-lg-6 col-md-12">
                 <div class="contact_message content">
                     <h3>contact us</h3>
-                    <p>Vinod etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum formas human. qui sequitur mutationem consuetudium lectorum. Mirum est notare quam</p>
+                    <p>Whether you have questions about our diverse range of used excavators, need assistance navigating our platform, or are looking for personalized guidance in your equipment search, our dedicated team at ResellRebuy.com is here to help.</p>
+                    <p>Feel free to reach out to us via email at support@resellrebuy.com, and our knowledgeable customer support representatives will respond promptly to address your inquiries. Additionally, you can connect with us through our contact form on the website, providing us with details about your specific needs and preferences.
+We value your feedback, and your experience on our platform matters to us. At ResellRebuy.com, we are committed to providing exceptional service, transparency, and support throughout your journey in the world of used excavators.</p>
+                    <p>Join us in revolutionizing the way you buy and sell construction equipment. Contact ResellRebuy.com today and experience the difference of a marketplace that prioritizes your needs and aspirations in the construction industry. We look forward to assisting you on your path to profits and success.</p>
                     <ul>
-                        <li><i class="fa fa-fax"></i> Address : No 40 Baria Sreet 133/2 NewYork City</li>
-                        <li><i class="fa fa-phone"></i> <a href="#">Infor@roadthemes.com</a></li>
-                        <li><i class="fa fa-envelope-o"></i><a href="tel:0(1234)567890">0 (1234) 567 890</a> </li>
+                        <li><i class="fa fa-fax"></i> Address: B-Block, Shed-4, Autonagar, Visakhapatnam-530012.</li>
+                        <li><i class="fa fa-phone"></i> <a href="#">support@resellrebuy.com</a></li>
+                        <li><i class="fa fa-envelope-o"></i><a href="tel:0(1234)567890">+91-9989287932</a> </li>
                     </ul>
                 </div>
             </div>
